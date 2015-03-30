@@ -1,0 +1,35 @@
+package LintCode;
+
+import java.util.ArrayList;
+
+public class Chapter5 {
+    private int n;
+    private int[][] f;
+    ArrayList<ArrayList<Integer>> triangle;
+    public int minimumTotal(ArrayList<ArrayList<Integer>> triangle) {
+        // write your code here
+        //start state at 0,0
+    	this.triangle = triangle;
+        this.n = triangle.size();//row number
+        this.f = new int[n][n];
+        //initialize f set
+        
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < n; j++){
+                f[i][j] = Integer.MAX_VALUE;
+            }
+        }
+        return f[0][0];
+    }
+    public int dfs (int x, int y){
+        if(x >= n){
+            return 0;
+        }
+        if(f[x][y] == Integer.MAX_VALUE){
+            return f[x][y];
+        }
+        f[x][y] = Math.min(dfs(x+1,y),dfs(x+1,y+1)) + triangle.get(x).get(y);
+        return f[x][y];
+    }  
+    
+}
