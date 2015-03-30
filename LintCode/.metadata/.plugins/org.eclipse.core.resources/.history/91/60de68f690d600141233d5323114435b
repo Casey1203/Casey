@@ -99,7 +99,9 @@ public class Chapter5 {
     }   
     
     
-       
+    
+    
+    
     public static void main(String[] args){
     	ArrayList<ArrayList<Integer>> doubleArray = new ArrayList<ArrayList<Integer>>();
     	ArrayList<Integer> a = new ArrayList<Integer>();

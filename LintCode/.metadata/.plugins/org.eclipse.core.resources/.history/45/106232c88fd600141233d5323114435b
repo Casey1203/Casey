@@ -80,26 +80,27 @@ public class Chapter5 {
         //calculating state set f
         for(int i = 1; i < n; i++){//row by row, down to bottom
         	for(int j = 0; j <= i; j++){//each row has i node in ith row
-        		if(f[i-1][j] != Integer.MAX_VALUE){
-        			f[i][j] = Math.min(f[i][j], f[i-1][j]);
+        		if(f[i-1][0] != Integer.MAX_VALUE){
+        			f[i][j] = Math.min(f[i][j], f[i-1][0]);
         		}
         		if(j>0 && f[i-1][j-1] != Integer.MAX_VALUE){
         			f[i][j] = Math.min(f[i][j], f[i-1][j-1]);
         		}
-        		f[i][j] += triangle.get(i).get(j);
         	}
         }
         
         //answer
         int answer = Integer.MAX_VALUE;
         for(int i = 0; i < f[n-1].length; i ++){
-        	answer = Math.min(answer, f[n-1][i]);
+        	answer = Math.max(answer, f[n][i]);
         }
         return answer;
     }   
     
     
-       
+    
+    
+    
     public static void main(String[] args){
     	ArrayList<ArrayList<Integer>> doubleArray = new ArrayList<ArrayList<Integer>>();
     	ArrayList<Integer> a = new ArrayList<Integer>();
@@ -122,7 +123,7 @@ public class Chapter5 {
     	doubleArray.add(a);
     	
     	Chapter5 cp5 = new Chapter5();
-    	System.out.print(cp5.minimumTotal_UpBottom(doubleArray));
+    	System.out.print(cp5.minimumTotal_ButtomUp(doubleArray));
     	
     }
 }

@@ -421,9 +421,6 @@ def betterEvaluationFunction(currentGameState):
     evaluation = evaluation - foodNum
     if ScaredTimes[0]<=0 and min_distance_ghost<10:
         evaluation = evaluation + min_distance_ghost * 4
-        
-    
-    
     
     return evaluation
     
