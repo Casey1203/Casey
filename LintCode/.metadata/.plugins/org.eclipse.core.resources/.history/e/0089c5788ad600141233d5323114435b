@@ -58,35 +58,6 @@ public class Chapter5 {
         //answer
         return f[0][0];
     }    
-    //Version 3: Up-bottom
-    public int minimumTotal_UpBottom(ArrayList<ArrayList<Integer>> triangle) {
-        // write your code here
-        //start state at 0,0
-    	this.triangle = triangle;
-        this.n = triangle.size();//row number
-        this.f = new int[n][n];
-        //initialize f set
-        if(n == 0){
-            return 0;
-        }
-        //init. the leave node into state set
-        for(int i = 0; i < n; i++){
-        	for(int j = 0; j < n; j++){
-        		f[i][j] = triangle.get(i).get(j);
-        	}
-        }
-        //calculating state set f
-        for(int i = n-2; i >=0; i--){
-        	for(int j = 0; j <= i; j++){
-        		f[i][j] = Math.min(f[i+1][j],f[i+1][j+1]) + triangle.get(i).get(j);
-        	}
-        }
-        //answer
-        return f[0][0];
-    }   
-    
-    
-    
     
     
     public static void main(String[] args){
