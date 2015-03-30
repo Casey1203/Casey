@@ -250,8 +250,8 @@ public class Chapter5 {
             f[i] = false;
         }
         for(int i = 1; i < n; i++){
-            for(int j = 0; j < i  ; j++){
-                if(f[j] == true && A[j] >= i-j){
+            for(int j = 0; j < i && A[j] >= i-j ; j++){
+                if(f[j] == true){
                     f[i] = true;
                     break;
                 }
@@ -281,7 +281,7 @@ public class Chapter5 {
     	a.add(8);
     	a.add(3);
     	doubleArray.add(a);
-    	int[] num = {3,2,1,0,4};
+    	int[] num = {2,3,1,1,4};
     	int[][] matrix = {{0,0,0},{0,1,0},{0,0,0}};
     	Chapter5 cp5 = new Chapter5();
     	//System.out.print(cp5.minimumTotal_UpBottom(doubleArray));

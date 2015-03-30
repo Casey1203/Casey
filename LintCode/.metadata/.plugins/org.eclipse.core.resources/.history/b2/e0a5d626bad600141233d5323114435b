@@ -215,52 +215,6 @@ public class Chapter5 {
         return f[m-1][n-1];
     }
     
-    
-    public int climbStairs(int n) {
-        // write your code here
-        //f[0] = 1
-        if(n == 0){
-            return 1;
-        }
-        //init. state set
-        int[] f = new int[n + 1];
-        f[0] = 1;
-        for(int i = 1; i <= n; i++){
-            if(i == 1){
-                f[i] = 1;
-            }
-            else{
-                f[i] = f[i-1] + f[i-2];
-            }
-        }
-        return f[n];
-    }
-    
-    public boolean canJump(int[] A) {
-        // wirte your code here
-        if(A == null){
-            return true;
-        }
-        int n = A.length;
-        //多开一个空间
-        boolean[] f = new boolean[n];
-        f[0] = true;
-        //init. state set
-        for(int i = 1; i < n; i++){
-            f[i] = false;
-        }
-        for(int i = 1; i < n; i++){
-            for(int j = 0; j < i  ; j++){
-                if(f[j] == true && A[j] >= i-j){
-                    f[i] = true;
-                    break;
-                }
-            }
-            System.out.println(i+","+f[i]);
-        }
-        return f[n - 1];
-    }
-    
     public static void main(String[] args){
     	ArrayList<ArrayList<Integer>> doubleArray = new ArrayList<ArrayList<Integer>>();
     	ArrayList<Integer> a = new ArrayList<Integer>();
@@ -281,10 +235,10 @@ public class Chapter5 {
     	a.add(8);
     	a.add(3);
     	doubleArray.add(a);
-    	int[] num = {3,2,1,0,4};
+    	int[] num = {9,1,4,7,3,-1,0,5,8,-1,6};
     	int[][] matrix = {{0,0,0},{0,1,0},{0,0,0}};
     	Chapter5 cp5 = new Chapter5();
     	//System.out.print(cp5.minimumTotal_UpBottom(doubleArray));
-    	System.out.println(cp5.canJump(num));
+    	System.out.println(cp5.uniquePathsWithObstacles(matrix));
     }
 }
