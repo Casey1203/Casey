@@ -100,7 +100,7 @@ public class Chapter5 {
     }   
     public int longestConsecutive(int[] num) {
         // write you code here
-        int returnMax = 1;
+        int maxConseSeq = 1;
         HashMap<Integer, Integer> hashMap = new HashMap<Integer, Integer>();
         if(num.length == 0){
             return 0;
@@ -110,9 +110,11 @@ public class Chapter5 {
             hashMap.put(i,0);
         }
         for(int temp : num){
-        	int maxConseSeq = 1;
-            if(hashMap.get(temp) == 1){//判断重复
+            if(hashMap.get(temp) == 1){
                 continue;
+            }
+            else{
+            	hashMap.put(temp,1);
             }
             int temp_backup = temp;
             while(hashMap.containsKey(temp + 1)){
@@ -126,9 +128,8 @@ public class Chapter5 {
                 temp--;
                 hashMap.put(temp, 1);
             }
-            returnMax = Math.max(maxConseSeq, returnMax);
         }
-        return returnMax;
+        return maxConseSeq;
     }
     
        
@@ -152,7 +153,7 @@ public class Chapter5 {
     	a.add(8);
     	a.add(3);
     	doubleArray.add(a);
-    	int[] num = {9,1,4,7,3,-1,0,5,8,-1,6};
+    	int[] num = {0,0,-1};
     	Chapter5 cp5 = new Chapter5();
     	//System.out.print(cp5.minimumTotal_UpBottom(doubleArray));
     	System.out.println(cp5.longestConsecutive(num));

@@ -111,6 +111,7 @@ public class Chapter5 {
         }
         for(int temp : num){
         	int maxConseSeq = 1;
+        	System.out.println(maxConseSeq);
             if(hashMap.get(temp) == 1){//判断重复
                 continue;
             }
@@ -126,9 +127,9 @@ public class Chapter5 {
                 temp--;
                 hashMap.put(temp, 1);
             }
-            returnMax = Math.max(maxConseSeq, returnMax);
+            returnMax = Math.max(maxConseSeq, returnMax)
         }
-        return returnMax;
+        return maxConseSeq;
     }
     
        

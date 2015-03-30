@@ -1,7 +1,6 @@
 package LintCode;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Chapter5 {
     private int n;
@@ -100,35 +99,25 @@ public class Chapter5 {
     }   
     public int longestConsecutive(int[] num) {
         // write you code here
-        int returnMax = 1;
+        int maxConseSeq = 0;
         HashMap<Integer, Integer> hashMap = new HashMap<Integer, Integer>();
         if(num.length == 0){
-            return 0;
-        }
-        //init. hashMap
-        for(int i:num){
-            hashMap.put(i,0);
+            return maxConseSeq;
         }
         for(int temp : num){
-        	int maxConseSeq = 1;
-            if(hashMap.get(temp) == 1){//判断重复
+            if(hashMap.get(temp) == 1){
                 continue;
             }
-            int temp_backup = temp;
-            while(hashMap.containsKey(temp + 1)){
+            if(hashMap.containsKey(temp + 1)){
                 maxConseSeq++;
-                temp++;
-                hashMap.put(temp,1);
+                hashMap.put(temp + 1,1);
             }
-            temp = temp_backup;
-            while(hashMap.containsKey(temp - 1)){
+            if(hashMap.containsKey(temp - 1)){
                 maxConseSeq++;
-                temp--;
-                hashMap.put(temp, 1);
+                hashMap.put(temp - 1, 1);
             }
-            returnMax = Math.max(maxConseSeq, returnMax);
         }
-        return returnMax;
+        return maxConseSeq;
     }
     
        
@@ -152,9 +141,9 @@ public class Chapter5 {
     	a.add(8);
     	a.add(3);
     	doubleArray.add(a);
-    	int[] num = {9,1,4,7,3,-1,0,5,8,-1,6};
+    	
     	Chapter5 cp5 = new Chapter5();
-    	//System.out.print(cp5.minimumTotal_UpBottom(doubleArray));
-    	System.out.println(cp5.longestConsecutive(num));
+    	System.out.print(cp5.minimumTotal_UpBottom(doubleArray));
+    	
     }
 }
