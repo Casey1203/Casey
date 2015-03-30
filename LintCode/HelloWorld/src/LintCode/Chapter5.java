@@ -2,6 +2,8 @@ package LintCode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Chapter5 {
     private int n;
@@ -242,7 +244,6 @@ public class Chapter5 {
             return true;
         }
         int n = A.length;
-        //多开一个空间
         boolean[] f = new boolean[n];
         f[0] = true;
         //init. state set
@@ -256,9 +257,78 @@ public class Chapter5 {
                     break;
                 }
             }
-            System.out.println(i+","+f[i]);
         }
         return f[n - 1];
+    }
+    
+    //O(n)
+    public boolean isPalindrome(String s){
+        if(s.length() == 0){
+            return true;
+        }
+        int i = 0;
+        int j = s.length()-1;
+        while(i < j){
+            if(s.charAt(i) != s.charAt(j)){
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
+    }
+    public int minCut(String s) {
+        // write your code here
+        if(s.length() == 0){
+            return 0;
+        }
+        //malloc one more space than the length of String
+        int n = s.length();
+        int[] f = new int[n+1];
+        
+        //init. state set
+        for(int i = 0; i <= n; i++){
+            f[i] = i-1;
+        }
+        //function
+        for(int i = 1; i <= n; i++){
+            for(int j = 0; j < i; j++){
+                if(isPalindrome(s.substring(j,i))){//if j~i is a Palindrome (index j in String s is the (j+1)th element)
+                    f[i] = Math.min(f[i],f[j] + 1);
+                }
+            }
+        }
+        return f[n];
+    }
+    
+    public boolean wordSegmentation(String s, Set<String> dict) {
+        // write your code here   
+        if(s.length() == 0 || s == null){
+            return true;
+        }
+        int n = s.length();//length of s
+        boolean[] f = new boolean[n+1];
+        //start state
+        f[0] = true;
+        //init. state set
+        for(int i = 1; i <= n; i++){
+            f[i] = false;
+        }
+        //function
+        for(int i = 1; i <= n; i++){
+            for(int j = 0; j < i; j++){
+                if(f[j] == false){
+                    continue;
+                }
+                if(dict.contains(s.substring(j,i))){
+                    f[i] = f[j];
+                    if(f[i] == true){
+                    	break;
+                    }
+                }
+            }
+        }
+        return f[n];
     }
     
     public static void main(String[] args){
@@ -285,6 +355,15 @@ public class Chapter5 {
     	int[][] matrix = {{0,0,0},{0,1,0},{0,0,0}};
     	Chapter5 cp5 = new Chapter5();
     	//System.out.print(cp5.minimumTotal_UpBottom(doubleArray));
-    	System.out.println(cp5.canJump(num));
+    	Set<String> dict = new TreeSet<String>();
+    	dict.add("bc");
+    	dict.add("cd");
+    	dict.add("de");
+    	dict.add("fg");
+    	dict.add("abcd");
+    	dict.add("efg");
+    	System.out.println(cp5.wordSegmentation("abcdefg",dict));
+    	
+    	
     }
 }
