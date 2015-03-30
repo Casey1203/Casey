@@ -187,7 +187,7 @@ public class Chapter5 {
         int[][] f = new int[m][n];
         //init. of state set
         for(int i = 0; i < m; i++){
-            if(obstacleGrid[i][0] != 1){
+            if(obstacleGrid[i][0] != null){
                 f[i][0] = 1;
             }
             else{
@@ -195,7 +195,7 @@ public class Chapter5 {
             }
         }
         for(int i = 0; i < n; i++){
-            if(obstacleGrid[0][i] != 1){
+            if(obstacleGrid[0][i] != null){
                 f[0][i] = 1;
             }
             else{
@@ -204,12 +204,7 @@ public class Chapter5 {
         }
         for(int i = 1; i < m; i++){
             for(int j = 1; j < n; j++){
-            	if(obstacleGrid[i][j] != 1){
-            		f[i][j] = f[i-1][j] + f[i][j-1];
-            	}
-            	else{
-            		f[i][j] = 0;
-            	}
+                f[i][j] = f[i-1][j] + f[i][j-1];
             }
         }
         return f[m-1][n-1];
@@ -236,9 +231,9 @@ public class Chapter5 {
     	a.add(3);
     	doubleArray.add(a);
     	int[] num = {9,1,4,7,3,-1,0,5,8,-1,6};
-    	int[][] matrix = {{0,0,0},{0,1,0},{0,0,0}};
+    	int[][] matrix = {{2,3,4,5,6},{6,8,3,6,1},{8,2,4,5,8},{10,9,6,7,11},{7,2,1,8,10}};
     	Chapter5 cp5 = new Chapter5();
     	//System.out.print(cp5.minimumTotal_UpBottom(doubleArray));
-    	System.out.println(cp5.uniquePathsWithObstacles(matrix));
+    	System.out.println(cp5.uniquePaths(3,7));
     }
 }

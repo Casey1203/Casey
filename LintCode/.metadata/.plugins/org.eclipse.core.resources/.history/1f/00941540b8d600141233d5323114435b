@@ -204,7 +204,7 @@ public class Chapter5 {
         }
         for(int i = 1; i < m; i++){
             for(int j = 1; j < n; j++){
-            	if(obstacleGrid[i][j] != 1){
+            	if(obstacleGrid[i][j] != 0){
             		f[i][j] = f[i-1][j] + f[i][j-1];
             	}
             	else{
