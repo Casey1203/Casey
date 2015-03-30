@@ -3,10 +3,10 @@ package LintCode;
 import java.util.ArrayList;
 
 public class Chapter5 {
+	
     private int n;
     private int[][] f;
     ArrayList<ArrayList<Integer>> triangle;
-    //version 1: Memoization
     public int minimumTotal(ArrayList<ArrayList<Integer>> triangle) {
         // write your code here
         //start state at 0,0
@@ -33,10 +33,7 @@ public class Chapter5 {
         }
         f[x][y] = Math.min(dfs(x+1,y),dfs(x+1,y+1)) + triangle.get(x).get(y);
         return f[x][y];
-    } 
-    
-    
-    
+    }  
     public static void main(String[] args){
     	ArrayList<ArrayList<Integer>> doubleArray = new ArrayList<ArrayList<Integer>>();
     	ArrayList<Integer> a = new ArrayList<Integer>();
