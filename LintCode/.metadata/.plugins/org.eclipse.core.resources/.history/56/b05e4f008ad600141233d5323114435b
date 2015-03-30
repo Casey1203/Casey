@@ -34,30 +34,7 @@ public class Chapter5 {
         f[x][y] = Math.min(dfs(x+1,y),dfs(x+1,y+1)) + triangle.get(x).get(y);
         return f[x][y];
     } 
-    //Version 2: Bottom-up
-    public int minimumTotal_ButtomUp(ArrayList<ArrayList<Integer>> triangle) {
-        // write your code here
-        //start state at 0,0
-    	this.triangle = triangle;
-        this.n = triangle.size();//row number
-        this.f = new int[n][n];
-        //initialize f set
-        if(n == 0){
-            return 0;
-        }
-        //init. the leave node into state set
-        for(int i = 0; i < n; i++){
-        	f[n-1][i] = triangle.get(n-1).get(i);
-        }
-        //calculating state set f
-        for(int i = n-2; i >=0; i--){
-        	for(int j = 0; j <= i; j++){
-        		f[i][j] = Math.min(f[i+1][j],f[i+1][j+1]) + triangle.get(i).get(j);
-        	}
-        }
-        //answer
-        return f[0][0];
-    }    
+    
     
     
     public static void main(String[] args){
@@ -82,7 +59,7 @@ public class Chapter5 {
     	doubleArray.add(a);
     	
     	Chapter5 cp5 = new Chapter5();
-    	System.out.print(cp5.minimumTotal_ButtomUp(doubleArray));
+    	System.out.print(cp5.minimumTotal(doubleArray));
     	
     }
 }
