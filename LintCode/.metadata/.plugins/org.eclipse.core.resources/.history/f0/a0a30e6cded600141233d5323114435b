@@ -378,7 +378,7 @@ public class Chapter5 {
     	a.add(8);
     	a.add(3);
     	doubleArray.add(a);
-    	int[] num = {4,2,4,5,3,7};
+    	int[] num = {5,4,1,2,3};
     	int[][] matrix = {{0,0,0},{0,1,0},{0,0,0}};
     	Chapter5 cp5 = new Chapter5();
     	//System.out.print(cp5.minimumTotal_UpBottom(doubleArray));

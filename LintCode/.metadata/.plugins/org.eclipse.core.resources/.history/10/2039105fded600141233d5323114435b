@@ -331,33 +331,6 @@ public class Chapter5 {
         return f[n];
     }
     
-    public int longestIncreasingSubsequence(int[] nums) {
-        // write your code here
-        if(nums.length == 0){
-            return 0;
-        }
-        int n = nums.length;
-        int[] f = new int[n];
-        //init. state set
-        for(int i = 0; i < n; i++){//the increase sequence just includes theirselves
-            f[i] = 1;
-        }
-        for(int i = 0; i < n; i++){
-            for(int j = 0; j < i; j++){
-                if(nums[j]<=nums[i]){
-                    f[i] = Math.max(f[i],f[j]+1);
-                }
-            }
-        }
-        int answer = f[0];
-        for(int i = 1; i < n; i++){
-            answer = Math.max(answer,f[i]);
-        }
-        return answer;
-    }
-    
-    
-    
     public static void main(String[] args){
     	ArrayList<ArrayList<Integer>> doubleArray = new ArrayList<ArrayList<Integer>>();
     	ArrayList<Integer> a = new ArrayList<Integer>();
@@ -378,7 +351,7 @@ public class Chapter5 {
     	a.add(8);
     	a.add(3);
     	doubleArray.add(a);
-    	int[] num = {4,2,4,5,3,7};
+    	int[] num = {3,2,1,0,4};
     	int[][] matrix = {{0,0,0},{0,1,0},{0,0,0}};
     	Chapter5 cp5 = new Chapter5();
     	//System.out.print(cp5.minimumTotal_UpBottom(doubleArray));
@@ -389,7 +362,7 @@ public class Chapter5 {
     	dict.add("fg");
     	dict.add("abcd");
     	dict.add("efg");
-    	System.out.println(cp5.longestIncreasingSubsequence(num));
+    	System.out.println(cp5.wordSegmentation("abcdefg",dict));
     	
     	
     }
