@@ -325,9 +325,13 @@ public class Chapter5 {
             f[i] = false;
         }
         //function
+        
+        
         for(int i = 1; i <= n; i++){
-            for(int j = 0; j < i; j++){
-                if(f[j] && dict.contains(s.substring(j,i))){
+        	StringBuilder myStringBuilder = new StringBuilder();
+            for(int j = i-1; j >=0; j--){
+            	myStringBuilder.insert(0, s.charAt(j));
+                if(f[j] && dict.contains(myStringBuilder.toString())){
                 	f[i] = true;
                 	break;
                 }

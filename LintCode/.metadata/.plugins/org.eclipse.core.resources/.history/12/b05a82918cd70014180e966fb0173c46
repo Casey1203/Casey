@@ -1,7 +1,10 @@
 package LintCode;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Chapter5 {
     private int n;
@@ -291,12 +294,75 @@ public class Chapter5 {
         //function
         for(int i = 1; i <= n; i++){
             for(int j = 0; j < i; j++){
-                if(isPalindrome(s.substring(j+1,i))){//if j+1~i is a Palindrome
-                    f[i] = Math.min(f[i],f[j+1] + 1);
+                if(isPalindrome(s.substring(j,i))){//if j~i is a Palindrome (index j in String s is the (j+1)th element)
+                    f[i] = Math.min(f[i],f[j] + 1);
                 }
             }
         }
         return f[n];
+    }
+    
+    public boolean wordSegmentation(String s, Set<String> dict) {
+        // write your code here   
+        if(s.length() == 0 || s == null){
+            return true;
+        }
+//        ArrayList<String> helper = new ArrayList<String>();
+//        for(String word : dict){
+//        	helper.add(word);
+//        }
+//        Collections.sort(helper);
+//        dict = new TreeSet<String>();
+//        for(int i = 0; i<helper.size(); i++){
+//        	dict.add(helper.get(i));
+//        }
+        int n = s.length();//length of s
+        boolean[] f = new boolean[n+1];
+        //start state
+        f[0] = true;
+        //init. state set
+        for(int i = 1; i <= n; i++){
+            f[i] = false;
+        }
+        //function
+        
+        
+        for(int i = 1; i <= n; i++){
+        	StringBuilder myStringBuilder = new StringBuilder();
+            for(int j = i-1; j >=0; j--){
+            	myStringBuilder.insert(0, s.charAt(j));
+                if(f[j] && dict.contains(myStringBuilder)){
+                	f[i] = true;
+                	break;
+                }
+            }
+        }
+        return f[n];
+    }
+    
+    public int longestIncreasingSubsequence(int[] nums) {
+        // write your code here
+        if(nums.length == 0){
+            return 0;
+        }
+        int n = nums.length;
+        int[] f = new int[n];
+        //init. state set
+        for(int i = 0; i < n; i++){//the increase sequence just includes theirselves
+            f[i] = 1;
+        }
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < i; j++){
+                if(nums[j]<=nums[i]){
+                    f[i] = Math.max(f[i],f[j]+1);
+                }
+            }
+        }
+        int answer = f[0];
+        for(int i = 1; i < n; i++){
+            answer = Math.max(answer,f[i]);
+        }
+        return answer;
     }
     
     
@@ -321,11 +387,18 @@ public class Chapter5 {
     	a.add(8);
     	a.add(3);
     	doubleArray.add(a);
-    	int[] num = {3,2,1,0,4};
+    	int[] num = {4,2,4,5,3,7};
     	int[][] matrix = {{0,0,0},{0,1,0},{0,0,0}};
     	Chapter5 cp5 = new Chapter5();
     	//System.out.print(cp5.minimumTotal_UpBottom(doubleArray));
-    	System.out.println(cp5.minCut("aaaa"));
+    	Set<String> dict = new TreeSet<String>();
+    	dict.add("bc");
+    	dict.add("cd");
+    	dict.add("de");
+    	dict.add("fg");
+    	dict.add("abcd");
+    	dict.add("efg");
+    	System.out.println(cp5.wordSegmentation("abcdefg",dict));
     	
     	
     }
