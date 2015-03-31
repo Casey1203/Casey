@@ -307,15 +307,7 @@ public class Chapter5 {
         if(s.length() == 0 || s == null){
             return true;
         }
-//        ArrayList<String> helper = new ArrayList<String>();
-//        for(String word : dict){
-//        	helper.add(word);
-//        }
-//        Collections.sort(helper);
-//        dict = new TreeSet<String>();
-//        for(int i = 0; i<helper.size(); i++){
-//        	dict.add(helper.get(i));
-//        }
+        Collections.sort(dict.toArray());
         int n = s.length();//length of s
         boolean[] f = new boolean[n+1];
         //start state
@@ -327,9 +319,14 @@ public class Chapter5 {
         //function
         for(int i = 1; i <= n; i++){
             for(int j = 0; j < i; j++){
-                if(f[j] && dict.contains(s.substring(j,i))){
-                	f[i] = true;
-                	break;
+                if(f[j] == false){
+                    continue;
+                }
+                if(dict.contains(s.substring(j,i))){
+                    f[i] = f[j];
+                    if(f[i] == true){
+                    	break;
+                    }
                 }
             }
         }
@@ -394,7 +391,7 @@ public class Chapter5 {
     	dict.add("fg");
     	dict.add("abcd");
     	dict.add("efg");
-    	System.out.println(cp5.wordSegmentation("abcdefg",dict));
+    	System.out.println(cp5.longestIncreasingSubsequence(num));
     	
     	
     }
