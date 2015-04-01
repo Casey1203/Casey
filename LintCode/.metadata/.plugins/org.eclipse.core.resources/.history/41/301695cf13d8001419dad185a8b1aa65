@@ -1,0 +1,40 @@
+package OtherExercise;
+
+import java.util.HashMap;
+
+public class ExerciseOnLintCode {
+
+    public int[] twoSum(int[] numbers, int target) {
+        // write your code here
+        if(numbers.length == 0){
+            //empty array
+            return new int[0];
+        }
+        HashMap<Integer,Integer> hashmapHelper = new HashMap<Integer,Integer>();
+        for(int i = 0; i < numbers.length; i++){
+            hashmapHelper.put(numbers[i],i+1);//put index value into hashtable
+        }
+        int i = 0;
+        while(i<numbers.length){
+            if(hashmapHelper.containsKey(target - numbers[i])){
+                int index[] = new int[2];
+                if(numbers[i] < (target - numbers[i])){
+                    index[0] = i+1;
+                    index[1] = hashmapHelper.get(target - numbers[i]);
+                }
+                else{
+                    index[0] = hashmapHelper.get(target - numbers[i]);
+                    index[1] = i+1;
+                }
+                return index;
+            }
+        }
+        return new int[0];
+    }
+	public static void main(String[] args){
+		int[] numbers = {2,7,11,15};
+		ExerciseOnLintCode eo = new ExerciseOnLintCode();
+		System.out.println(eo.twoSum(numbers, 9).toString());
+	}
+	
+}
