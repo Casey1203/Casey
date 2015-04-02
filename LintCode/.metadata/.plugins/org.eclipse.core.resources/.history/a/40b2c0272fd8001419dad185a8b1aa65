@@ -42,14 +42,10 @@ public class ExerciseOnLintCode {
         int i = 1;//traverse the array
         int j = 0;
         while(i < n){
-            if(A[i] == A[j]){
-            	while(++i < n && A[i] == A[j]){
-            		continue;
+            if(A[i]== A[j]){
+            	while(A[++i] != A[j]){
+            		A[++j] = A[i];
             	}
-            	if(i>=n){
-            		break;
-            	}
-            	A[++j] = A[i];
             	i++;
             }
             else{

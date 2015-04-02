@@ -41,16 +41,10 @@ public class ExerciseOnLintCode {
         int n = A.length;
         int i = 1;//traverse the array
         int j = 0;
-        while(i < n){
-            if(A[i] == A[j]){
-            	while(++i < n && A[i] == A[j]){
-            		continue;
-            	}
-            	if(i>=n){
-            		break;
-            	}
-            	A[++j] = A[i];
-            	i++;
+        while(i < n - 1){
+            if(A[i]== A[j]){
+                A[++j] = A[++i];
+                i++;
             }
             else{
                 i++;
@@ -63,7 +57,7 @@ public class ExerciseOnLintCode {
     
     
 	public static void main(String[] args){
-		int[] numbers = {1,1};
+		int[] numbers = {0,0,1,1};
 		ExerciseOnLintCode eo = new ExerciseOnLintCode();
 		System.out.println(eo.removeDuplicates(numbers));
 	}
