@@ -4,6 +4,58 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Subset {
+    
+    public int strStr(String source, String target) {
+        //write your code here
+        if (null == source || null == target)
+    		return -1;
+        int slen = source.length();
+        int tlen = target.length();
+        if(0 == tlen)
+        	return 0;
+    	else{
+        	int next[] = getNext(target);
+            int i = 0;
+            int j = 0;
+            while(i<slen && j<tlen){
+                //match, i++, j++
+                if(-1 == j || source.charAt(i)==target.charAt(j))
+                {
+                    i++;
+                    j++;
+                }
+                else{//not match, j return to next[j]
+                    j = next[j];
+                }
+            }
+            if(j == tlen)
+            	return i - j;
+            else
+            	return -1;
+    	}
+    }
+    public int[] getNext(String target){
+        int tlen = target.length();
+        int next[] = new int[tlen];
+        next[0] = -1;
+        int k = -1;
+        int j = 0;
+        while(j < tlen - 1){
+            
+            if (-1 == k || target.charAt(k) == target.charAt(j)){
+                k++;
+                j++;
+                next[j] = k;
+            }
+            else{
+                k = next[k];
+            }
+        }
+        return next;
+    }
+    
+    
+    
 	public ArrayList<ArrayList<Integer>> subsets(ArrayList<Integer> S){
 		ArrayList<ArrayList<Integer>> subset = new ArrayList<ArrayList<Integer>>();
 		Collections.sort(S);
@@ -106,27 +158,28 @@ public class Subset {
 		ArrayList<ArrayList<Integer>> closedSet = new ArrayList<ArrayList<Integer>>();
 		while(!frontier.isEmpty()){
 			ArrayList<Integer> current_state = new ArrayList<Integer>();
+            //pop from frontier
 			current_state = frontier.get(frontier.size()-1);
 			frontier.remove(frontier.size()-1);
-			closedSet.add(new ArrayList<Integer>(current_state));
+			closedSet.add(new ArrayList<Integer>(current_state));//add into closedSet
 			//System.out.println(closedSet.toString());
-			if(current_state.size() == nums_backup.size()){
+			if(current_state.size() == nums_backup.size()){//done
 				permutation.add(current_state);
 			}
 			else{
-				if(nums.isEmpty()){
+				if(nums.isEmpty()){//recover nums
 					nums = new ArrayList<Integer>(nums_backup);
 				}
-				ArrayList<Integer> successor = getSuccessorWithDup(nums,current_state);
+				ArrayList<Integer> successor = getSuccessorWithDup(nums,current_state);//remove element from nums which is already in the current_state set
 				if(!nums.isEmpty()){
-					for(int a : successor){
+					for(int a : successor){//add each of successor and put into frontier
 						current_state.add(a);
 						//System.out.println(current_state.toString());
 						//System.out.println(closedSet.toString());
 						if(closedSet.contains(current_state) == false){
 							frontier.add(new ArrayList<Integer>(current_state));	
 						}
-						current_state.remove(current_state.size()-1);
+						current_state.remove(current_state.size()-1);//recover to the state before entering the for loop
 					}
 				}
 			}

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 public class Chapter2{
 
+
+    //using the binarySearch in the following function
     public int binarySearch(int[] nums, int target) {
         //write your code here
     	int ret = binarySearch(nums, 0, nums.length-1, target);
@@ -40,7 +42,6 @@ public class Chapter2{
         while(start + 1 < end){
             int mid = start + (end - start)/2;
             if(A[mid] == target){
-            	System.out.println(mid);
                 end = mid;
             }
             else if(A[mid] < target){
@@ -59,7 +60,8 @@ public class Chapter2{
         }
         return -1;
     }
-    
+    //Given a sorted array and a target value, return the index if the target is found. 
+    //If not, return the index where it would be if it were inserted in order.
     public int searchInsert(int[] A, int target){
     	if(A.length == 0) return 0;
     	int start = 0;
@@ -89,8 +91,9 @@ public class Chapter2{
 		}
     }
     
-    
-    
+    //Given a sorted array of integers, find the starting and ending position of a given target value.
+    //Your algorithm's runtime complexity must be in the order of O(log n).
+    //If the target is not found in the array, return [-1, -1].
     public ArrayList<Integer> searchRange(ArrayList<Integer> A, int target) {
         //write your code here
         ArrayList<Integer> bound = new ArrayList<Integer>();
@@ -108,7 +111,7 @@ public class Chapter2{
             	bound.add(-1);
             	bound.add(-1);
         	}
-        	else{
+        	else{//add all the duplicate part
             	while(ret >0 && nums[ret] == nums[ret - 1]){
             		ret--;
             	}
@@ -121,7 +124,11 @@ public class Chapter2{
         }
         return bound;
     }
-    
+    //twice binary search
+    //Write an efficient algorithm that searches for a value in an m x n matrix.
+    //This matrix has the following properties:
+    //* Integers in each row are sorted from left to right.
+    //* The first integer of each row is greater than the last integer of the previous row.
     public boolean searchMatrix(int[][] matrix, int target) {
         // write your code here
         if(matrix.length == 0) return false;
@@ -164,6 +171,13 @@ public class Chapter2{
         return false;
     }
     
+    //Write an efficient algorithm that searches for a value in an m x n matrix, return the occurrence of it.
+    //This matrix has the following properties:
+        //* Integers in each row are sorted from left to right.
+        //* Integers in each column are sorted from up to bottom.
+        //* No duplicate integers in each row or column.
+    
+    
     public int searchMatrix2(int[][] matrix, int target) {
         // write your code here
         int m = matrix.length - 1;//row
@@ -174,10 +188,10 @@ public class Chapter2{
             if(target == matrix[m][n]){
                 count ++;
                 m--;
-                n++;
+                n++;//diagnose
             }
             else if(target > matrix[m][n]){
-                n++;
+                n++;//
             }
             else{
                 m--;
@@ -187,18 +201,21 @@ public class Chapter2{
         return count;
     }
     
+    //There is an integer array which has the following features:
+        //* The numbers in adjacent positions are different.
+        //* A[0] < A[1] && A[A.length - 2] > A[A.length - 1].
+    //We define a position P is a peek if A[P] > A[P-1] && A[P] > A[P+1].
+    //Find a peak element in this array. Return the index of the peak.
     public int findPeak(int [] A){
     	int start = 0;
     	int end = A.length-1;
         
         int peak = A[1];
         while(start<= end){
-        	
         	int mid = start + (end - start)/2;
             int mid_val = A[mid];
             int pre = A[mid-1];
-            int aft = A[mid+1];
-            
+            int aft = A[mid+1];     
             if(relation(mid_val,pre,aft) == 1){
             	peak = mid;
                 return mid;
@@ -232,7 +249,13 @@ public class Chapter2{
         else
             return 0;
     }
-    
+    //Suppose a sorted array is rotated at some pivot unknown to you beforehand.
+
+    //(i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2).
+
+    //You are given a target value to search. If found in the array return its index, otherwise return -1.
+
+    //You may assume no duplicate exists in the array.
     public int search(int[] A, int target) {
         // write your code here
     	if (A.length == 0)
