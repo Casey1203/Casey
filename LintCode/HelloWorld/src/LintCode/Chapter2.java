@@ -294,16 +294,19 @@ public class Chapter2{
         }
         return -1;
     }
-    
+    //假设一个旋转排序的数组其起始位置是未知的（比如0 1 2 4 5 6 7 可能变成是4 5 6 7 0 1 2）。
+
+    //你需要找到其中最小的元素。
+
+    //你可以假设数组中不存在重复的元素。
     public int findMin(int[] num) {
         // write your code here
         if (num.length == 0) return -1;
         int start = 0;
         int end = num.length - 1;
         while(start + 1 < end){
-        	System.out.println(start+","+end);
             int mid = start + (end - start)/2;
-            if(num[mid]<=num[start]){
+            if(num[mid]<=num[start]){//mid is at the second increase array
                 end = mid;
             }
             else if(num[mid]>start && num[end] >= num[start]){
@@ -451,7 +454,7 @@ public class Chapter2{
     }
     
     public int findKth(int[] A, int[] B, int Astart, int Bstart, int k){
-        if(Astart >= A.length){
+        if(Astart >= A.length){//A array is done scan
             return B[Bstart + k - 1];
         }
         else if(Bstart >= B.length){
@@ -462,7 +465,7 @@ public class Chapter2{
         	return Math.min(A[Astart],B[Bstart]);
         
         int Akey = 0;
-        if(Astart + k/2 -1 > A.length){
+        if(Astart + k/2 -1 > A.length){//there is no enough element in array A, say, over k/2
             Akey = Integer.MAX_VALUE;
         }
         else{
@@ -498,6 +501,7 @@ public class Chapter2{
     
     public void recoverRotatedSortedArray(ArrayList<Integer> nums) {
         // write your code
+        //three step reverse
         for(int i = 0; i < nums.size() - 1; i++){
         	
             if(nums.get(i) > nums.get(i + 1)){
@@ -509,7 +513,7 @@ public class Chapter2{
             }
         }
     }
-    
+    //two point, i from start, j from end
     public void reverse(ArrayList<Integer> nums, int start, int end){
         int i = start;
         int j = end;
@@ -521,7 +525,7 @@ public class Chapter2{
             j--;
         }
     }
-    
+    //also use three reverse method
     public char[] rotateString(char[] A, int offset) {
         // wirte your code here
     	if(A.length == 0) {
@@ -534,6 +538,7 @@ public class Chapter2{
         return A;
         
     }
+    //reverse char array
     public void reverse(char[] A, int start, int end){
         int i = start;
         int j = end;
@@ -545,6 +550,7 @@ public class Chapter2{
             j--;
         }
     }
+    
     public String reverseWords(String s) {
         // write your code
     	if(s.length()==0) return s;
@@ -571,6 +577,7 @@ public class Chapter2{
             }
         }
         s = "";
+        //reconstruction from arraylist
         if(!sList.isEmpty()){
             for(int j = sList.size()-1; j > 0; j--){
             	s = s + sList.get(j) + " ";
@@ -579,7 +586,7 @@ public class Chapter2{
         }
         return s; 
     }
-    
+    //reverse string
     public void reverse(String s, int start, int end){
         int i = start;
         int j = end;

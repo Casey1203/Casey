@@ -27,18 +27,19 @@ public class Chapter3 {
           this.maxPath = maxPath;
       }
   }
+  
     public boolean isValidBST(TreeNode root) {
         // write your code here
     	boolean flag = false;
-        if(root == null || (root.left == null && root.right == null)) return true;
+        if(root == null || (root.left == null && root.right == null)) return true;//exception
         if(root.left != null){
         	if(root.right != null){
-                if(root.val > root.left.val && root.right.val > root.val){
+                if(root.val > root.left.val && root.right.val > root.val){//root is BST
                 	flag = true;
                 }
         	}
         	else{
-        		if(root.val > root.left.val){
+        		if(root.val > root.left.val){//no right subtree, larger than the left root value is ok
         			flag = true;
         		}
         	}
@@ -55,39 +56,43 @@ public class Chapter3 {
         		}
         	}
         }
-
+        //recursion
         return flag && isValidBST(root.left) && isValidBST(root.right);
     }
 	
-    
-    public ArrayList<Integer> preorderTraversal(TreeNode root) {
+    //Given a binary tree, return the preorder traversal of its nodes' values.
+    public ArrayList<Integer> preorderTraversal(TreeNode root) {//root,left,right
         // write your code here
         ArrayList<Integer> result = new ArrayList<Integer>();
         if(root == null){
             return result;
         }
-        
-        result.add(root.val);
+        //divide
         ArrayList<Integer> left = preorderTraversal(root.left);
         ArrayList<Integer> right = preorderTraversal(root.right);
-        
+        //conquer
+        result.add(root.val);        
         result.addAll(left);
         result.addAll(right);
         
         return result;
     }
-    
+    //Given a binary tree, find its maximum depth.
+    //The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
     public int maxDepth(TreeNode root) {
         // write your code here
         if(root == null){
             return 0;
         }
+        //divide
         int leftMaxDepth = maxDepth(root.left) + 1;
         int rightMaxDepth = maxDepth(root.right) + 1;
+        //conquer
         int max = Math.max(leftMaxDepth,rightMaxDepth);
         return max;
     }
-    
+    //Given a binary tree, determine if it is height-balanced.
+    //For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.
     public boolean isBalanced(TreeNode root) {
         // write your code here
     	boolean flag = false;
@@ -104,7 +109,11 @@ public class Chapter3 {
         }
         return flag && isBalanced(root.left) && isBalanced(root.right);
     }
-    
+    //Given a binary tree, find the maximum path sum.
+
+    //The path may start and end at any node in the tree.
+
+
     public int maxPathSum(TreeNode root) {
         // write your code here
         ResultType result = findMathPathSum(root);
@@ -276,6 +285,32 @@ public class Chapter3 {
         }
         return root;
     }
+    public TreeNode insertNode1(TreeNode root, TreeNode node) {
+        //non recursion
+        if(root == null){
+            return node;
+        }
+        TreeNode pre = null;
+        TreeNode curt = root;
+        while(curt != null){
+            if(curt.val > node.val){
+                pre = curt;
+                curt = curt.left;
+            }
+            else if(curt.val < node.val){
+                pre = curt;
+                curt = curt.right;
+            }
+        }
+        if(pre.val > node.val){
+            pre.left = node;
+        }
+        else if(pre.val < node.val){
+            pre.right = node;
+        }
+        return root;
+    }
+    
     
     public ArrayList<Integer> searchRange(TreeNode root, int k1, int k2) {
         // write your code here
@@ -301,17 +336,12 @@ public class Chapter3 {
     
 	public static void main(String[] args){
 		Chapter3 cp3 = new Chapter3();
-		ArrayList<TreeNode> root = new ArrayList<TreeNode>();
-		for(int i = 1; i < 5; i++){
-			root.add(cp3.new TreeNode(i));
-		}
-		root.get(0).val = 2;
-		root.get(1).val = 1;
-		root.get(2).val = 4;
-		root.get(3).val = 3;
-		root.get(0).left = root.get(1);
-		root.get(0).right = root.get(2);
-		root.get(2).left = root.get(3);
+		TreeNode root = cp3.new TreeNode(2);
+		
+		root.left = cp3.new TreeNode(1);
+		root.right = cp3.new TreeNode(4);
+		
+		root.right.left = cp3.new TreeNode(3);
 //		root.get(1).left = root.get(3);
 //		root.get(2).left = root.get(4);
 //		root.get(2).right = root.get(5);
@@ -321,8 +351,9 @@ public class Chapter3 {
 //		root.get(4).right = root.get(9);
 //		root.get(5).left = root.get(10);
 //		root.get(5).right = root.get(11);
-		ArrayList<Integer> result = cp3.searchRange(root.get(0),0,3);
-		System.out.println(result.get(3));
+		TreeNode insertNode = cp3.new TreeNode(6);
+		TreeNode result = cp3.insertNode1(root,insertNode);
+		System.out.println(cp3.preorderTraversal(result).toString());
 		//System.out.println(cp3.maxDepth(root.get(1)));
 	}
 	

@@ -9,6 +9,9 @@ import java.util.TreeSet;
 public class Chapter5 {
     private int n;
     private int[][] f;
+    //给定一个数字三角形，找到从顶部到底部的最小路径和。每一步可以移动到下面一行的相邻数字上。
+    //注意
+    //如果你只用额外空间复杂度O(n)的条件下完成可以获得加分，其中n是数字三角形的总行数。
     ArrayList<ArrayList<Integer>> triangle;
     //version 1: Memoization
     public int minimumTotal(ArrayList<ArrayList<Integer>> triangle) {
@@ -21,6 +24,7 @@ public class Chapter5 {
         if(n == 0){
             return 0;
         }
+        //init. state set
         for(int i = 0; i < n; i++){
             for(int j = 0; j < n; j++){
                 f[i][j] = Integer.MAX_VALUE;
@@ -32,6 +36,7 @@ public class Chapter5 {
         if(x >= n){
             return 0;
         }
+        //if f[x][y] is not infinite, means f(x,y) has been calculated, return it directly
         if(f[x][y] != Integer.MAX_VALUE){
             return f[x][y];
         }
@@ -50,6 +55,7 @@ public class Chapter5 {
             return 0;
         }
         //init. the leave node into state set
+        //leave nodes are at the lowest level.
         for(int i = 0; i < n; i++){
         	f[n-1][i] = triangle.get(n-1).get(i);
         }
@@ -83,24 +89,24 @@ public class Chapter5 {
         f[0][0] = triangle.get(0).get(0);
         //calculating state set f
         for(int i = 1; i < n; i++){//row by row, down to bottom
-        	for(int j = 0; j <= i; j++){//each row has i node in ith row
-        		if(f[i-1][j] != Integer.MAX_VALUE){
+        	for(int j = 0; j <= i; j++){//each row has i node in ith row, thus from 0 to i, to traverse this row
+        		if(f[i-1][j] != Integer.MAX_VALUE){//要考虑右边界没有右肩
         			f[i][j] = Math.min(f[i][j], f[i-1][j]);
         		}
-        		if(j>0 && f[i-1][j-1] != Integer.MAX_VALUE){
+        		if(j>0 && f[i-1][j-1] != Integer.MAX_VALUE){//要考虑左边界没有左肩
         			f[i][j] = Math.min(f[i][j], f[i-1][j-1]);
         		}
         		f[i][j] += triangle.get(i).get(j);
         	}
         }
-        
-        //answer
+        //answer, minimum leave
         int answer = Integer.MAX_VALUE;
         for(int i = 0; i < f[n-1].length; i ++){
         	answer = Math.min(answer, f[n-1][i]);
         }
         return answer;
     }   
+    
     public int longestConsecutive(int[] num) {
         // write you code here
         int returnMax = 1;
@@ -133,6 +139,7 @@ public class Chapter5 {
         }
         return returnMax;
     }
+    
     public int minPathSum(int[][] grid) {
         // write your code here
         if(grid.length == 0){
@@ -141,12 +148,14 @@ public class Chapter5 {
         int m = grid.length;
         int n = grid[0].length;
         int[][] f = new int[m][n];
-        //init.
+        //init. 边界初始化
+        //row 0 为0 ~ m-1
         int sum = 0;
         for(int i = 0; i < m; i++){
             sum = sum + grid[i][0];
             f[i][0] = sum;
         }
+        //column 为0 ~ n-1
         sum = 0;
         for(int i = 0; i < n; i++){
             sum = sum + grid[0][i];
@@ -160,7 +169,7 @@ public class Chapter5 {
         return f[m-1][n-1];
     }
     
-    
+    //写出多少种独立的方案
     public int uniquePaths(int m, int n) {
         // write your code here 
     	
@@ -169,19 +178,22 @@ public class Chapter5 {
         }
         int[][] f = new int[m][n];
         //init. of state set
-        for(int i = 0; i < m; i ++){
+        //边界初始化
+        for(int i = 0; i < m; i ++){//row 0 全部为1
             f[i][0] = 1;
         }
-        for(int i = 0; i < n; i ++){
+        for(int i = 0; i < n; i ++){//column 0 全部为1
             f[0][i] = 1;
         }
         for(int i = 1; i < m; i ++){
             for(int j = 1; j < n; j++){
+                //i,j有多少种走法等于它上面的值加上左边的值
                 f[i][j] = f[i-1][j] + f[i][j-1];
             }
         }
         return f[m-1][n-1];
     }
+    //obstacle定义为0，以及它以它为开始的同一条row和column的值都为0
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
         // write your code here
         if(obstacleGrid == null){
@@ -220,7 +232,7 @@ public class Chapter5 {
         return f[m-1][n-1];
     }
     
-    
+    //
     public int climbStairs(int n) {
         // write your code here
         //f[0] = 1
@@ -355,7 +367,7 @@ public class Chapter5 {
         }
         for(int i = 0; i < n; i++){
             for(int j = 0; j < i; j++){
-                if(nums[j]<=nums[i]){
+                if(nums[j]<=nums[i]){//make sure nums[i] can be as a part of this increasing series, thus f[i] = f[j] + 1
                     f[i] = Math.max(f[i],f[j]+1);
                 }
             }
