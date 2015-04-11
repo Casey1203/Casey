@@ -63,12 +63,12 @@ public class Subset {
 		return subset;
 	}
 	
-	public void dfs(ArrayList<Integer> S, int index, ArrayList<Integer> path, ArrayList<ArrayList<Integer>> subset){
+	public void dfs(ArrayList<Integer> S, int index, ArrayList<Integer> path, ArrayList<ArrayList<Integer>> subset){//index is the current traverse position, we need to scan through the element before index.
 		subset.add(new ArrayList<Integer>(path));
 		for(int i = index; i<S.size(); i++){
 			path.add(S.get(i));
 			dfs(S,i + 1,path,subset);
-			path.remove(path.size()-1);
+			path.remove(path.size()-1);//return to the former level
 		}
 	}
 	
