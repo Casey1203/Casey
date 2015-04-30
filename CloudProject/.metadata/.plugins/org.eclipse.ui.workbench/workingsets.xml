@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1429172203483_1" label="mahout" name="mahout">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/mahout-integration" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/mahout-mr" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/mahout-hdfs" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/mahout-spark_" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/mahout-h2o_" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/mahout-math-scala_" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/mahout-spark-shell_" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/mahout" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/mahout-distribution" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/mahout-buildtools" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/mahout-examples" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/mahout-math" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1429195289923_2" label="hadoop-main" name="hadoop-main">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-mapreduce-client-core" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-datajoin" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-yarn-applications-unmanaged-am-launcher" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-yarn-registry" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-sls" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-hdfs-project" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-hdfs" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-auth" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-mapreduce-client" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-openstack" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-mapreduce-client-hs-plugins" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-hdfs-nfs" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-distcp" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-annotations" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-yarn-server-applicationhistoryservice" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-rumen" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-ant" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-pipes" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-project-dist" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-minicluster" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-mapreduce-client-common" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-mapreduce-examples" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-tools" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-yarn-applications" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-yarn-server-nodemanager" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-mapreduce" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-tools-dist" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-yarn-api" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-hdfs-httpfs" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-yarn-common" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-auth-examples" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-yarn-site" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-yarn-project" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-dist" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-mapreduce-client-app" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-maven-plugins" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-common" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-common-project" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-yarn-server-resourcemanager" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-yarn-client" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-kms" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-archives" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-assemblies" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-yarn-server-common" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-streaming" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-yarn-applications-distributedshell" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-extras" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-client" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-mapreduce-client-shuffle" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-mapreduce-client-jobclient" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-mapreduce-client-hs" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-yarn-server-tests" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-aws" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-project" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-yarn-server-web-proxy" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-yarn" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-hdfs-bkjournal" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-yarn-server" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-minikdc" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-gridmix" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-nfs" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hadoop-main" type="4"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1429103616528_0" label="Window Working Set" name="Aggregate for window 1429103616527"/>
+</workingSetManager>

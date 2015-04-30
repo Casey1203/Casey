@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;appengine-mapreduce&apos;" deleteContents="false" description="Delete resource &apos;appengine-mapreduce&apos;" element1="/appengine-mapreduce" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1429298095898"/>
+</session>
